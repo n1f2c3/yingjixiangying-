@@ -23,8 +23,10 @@ mkdir C:\tmpxxxxxx
 
 ::针对隐藏用户的查看,暂时只能是net user$的方式查看
 ::查看用户名和密码
+echo "计算机版本"
+wmic os get caption,csdversion,version   >  C:\tmpxxxxxx\计算机版本.txt
 echo "管理员用户组"
-net localgroup administrators  〉 C:\tmpxxxxxx\管理员用户组.txt
+net localgroup administrators  > C:\tmpxxxxxx\管理员用户组.txt
 echo "普通成员用户组"
 net localgroup Users  >  C:\tmpxxxxxx\普通成员用户.txt
 echo "网络状态检查"
