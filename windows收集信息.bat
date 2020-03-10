@@ -102,7 +102,8 @@ echo "https://3gstudent.github.io/%25E6%25B8%2597%25E9%2580%258F%25E6%258A%2580%
 
 
 
-
+echo "开始查看cmd历史"
+doskey /history
 
 
 echo "开始拷贝系统日志"
