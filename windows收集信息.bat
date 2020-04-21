@@ -121,6 +121,7 @@ reg export HKU  C:\tmpxxxxxx\注册表\hku.reg > nul
 reg export HKCC C:\tmpxxxxxx\注册表\hkcc.reg > nul
 
 echo "注册表备份成功"
+回收站、浏览器保存记录、https://github.com/TonyPhipps/Meerkat
 
 pause
 
