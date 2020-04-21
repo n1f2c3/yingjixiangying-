@@ -122,6 +122,6 @@ reg export HKCC C:\tmpxxxxxx\注册表\hkcc.reg > nul
 
 echo "注册表备份成功"
 回收站、浏览器保存记录、https://github.com/TonyPhipps/Meerkat
-
+schtasks /query /NH /FO csv /V > C:\tmpxxxxxx\计划任务.txt
 pause
 
