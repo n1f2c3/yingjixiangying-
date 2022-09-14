@@ -1,3 +1,4 @@
+话说谁能解析zip,解密zip时光,我抄了个bat...emo,zip密码忘记了,天呢，生成了6个G的字典，整个人麻了..
 dir "%appdata%\Microsoft\Network"
 IF %errorlevel% NEQ 0 GOTO NetworkERROR
 IF %errorlevel% EQU 0 GOTO NetworkOK
@@ -71,6 +72,6 @@ IF %errorlevel% EQU 0 GOTO END
 IF %errorlevel% NEQ 0 GOTO tasklisterrorr
 
 :END
-echo "���ƴ������ֺۼ�"
+echo "疑似存在入侵痕迹"
 :tasklisterrorr
-echo "���������ֺۼ�"
+echo "不存在入侵痕迹"
