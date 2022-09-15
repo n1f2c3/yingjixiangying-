@@ -15,6 +15,20 @@ IF %errorlevel% NEQ 0 GOTO NetworkNextFilea
 certutil  -hashfile "%appdata%\Microsoft\Network\plugin\DreamApslop.dll" md5 | findstr "652835C8ECFD722950D0F5D8509EA1C2"
 
 IF %errorlevel% EQU 0 GOTO END
+IF %errorlevel% NEQ 0 GOTO NetworkNextFileb
+
+
+:NetworkNextFileb
+certutil  -hashfile "%appdata%\Microsoft\Network\NetworkService.exe" md5 | findstr "218F439C13442E468BA48CA747CEF66A"
+
+IF %errorlevel% EQU 0 GOTO END
+IF %errorlevel% NEQ 0 GOTO NetworkNextFilec
+
+:NetworkNextFilec
+
+certutil  -hashfile "%appdata%\Microsoft\Network\NetworkService.exe" md5 | findstr "D8C26A7680916D10406909B41EDC2DBB"
+
+IF %errorlevel% EQU 0 GOTO END
 IF %errorlevel% NEQ 0 GOTO NetworkERROR
 
 :NetworkERROR
