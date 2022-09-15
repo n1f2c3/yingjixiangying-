@@ -60,7 +60,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\services\SystemSecurityService" | finds
 IF %errorlevel% EQU 0 GOTO END
 IF %errorlevel% NEQ 0 GOTO ServicesErrorrrr
 :ServicesErrorrrr
-tasklist | findstr "NetworkService.exe" || "SearchIndexerService.exe"
+tasklist | findstr "NetworkService.exe     SearchIndexerService.exe"
 IF %errorlevel% EQU 0 GOTO END
 IF %errorlevel% NEQ 0 GOTO tasklisterror
 :tasklisterror
@@ -72,6 +72,10 @@ IF %errorlevel% EQU 0 GOTO END
 IF %errorlevel% NEQ 0 GOTO tasklisterrorr
 
 :END
-echo "疑似存在入侵痕迹"
+echo "疑似存在 魔盗 入侵痕迹"
+pause
+exit
 :tasklisterrorr
-echo "不存在入侵痕迹"
+echo "不存在 魔盗 入侵痕迹"
+pause
+exit
