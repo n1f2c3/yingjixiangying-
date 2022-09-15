@@ -37,7 +37,17 @@ IF %errorlevel% NEQ 0 GOTO securityError
 :securitynextfileb
 certutil  -hashfile  "C:\Windows\SysWow64\security\NetworkService\NetworkService.exe" md5 | findstr "AB4FB51F10548AF01AA8C0829BB723E5"
 IF %errorlevel% EQU 0 GOTO END
+IF %errorlevel% NEQ 0 GOTO securitynextfileC
+:securitynextfileC
+certutil  -hashfile  "C:\Windows\SysWow64\security\NetworkService\NetworkService.exe" md5 | findstr "218F439C13442E468BA48CA747CEF66A"
+IF %errorlevel% EQU 0 GOTO END
+IF %errorlevel% NEQ 0 GOTO securitynextfileD
+
+:securitynextfileD
+certutil  -hashfile  "C:\Windows\SysWow64\security\NetworkService\NetworkService.exe" md5 | findstr "D8C26A7680916D10406909B41EDC2DBB"
+IF %errorlevel% EQU 0 GOTO END
 IF %errorlevel% NEQ 0 GOTO securityError
+
 :securityError
 sc queryex  state= all	|findstr "SystemSecurityService"
 IF %errorlevel% EQU 0 GOTO ServicesOk
