@@ -1,0 +1,117 @@
+------------------------------------
+import pyzipper
+from multiprocessing import Process
+import functools
+import  pandas as pd
+import time
+reader=pd.read_csv('dict.txt',header=None,iterator=True,keep_default_na=False)
+def hack(numbers,i):
+    with pyzipper.AESZipFile('C:\\Users\\xxxx\\Desktop\\xxxx\\xxx.zip', 'r', compression=pyzipper.ZIP_DEFLATED, encryption=pyzipper.WZ_AES) as f:
+        for u in numbers:
+            f.pwd =((str(u[0])).strip()).encode('utf-8')
+            try:
+                f.extractall()
+                print("\t密码是:" +((str(u[0])).strip()).encode('utf-8'))
+            except Exception as e:
+                print(i)
+                print(((str(u[0])).strip()).encode('utf-8'))
+                print(e)
+
+if __name__ == "__main__":
+    start = time.time()
+    while True:
+        lists=[]
+        try:
+            number1=(reader.get_chunk(10000)).values
+            p1 = Process(target=hack, args=(number1, '1',))
+            lists.append(p1)
+        except Exception as e:
+            print(e)
+            break
+        try:
+            number2=(reader.get_chunk(10000)).values
+            p2 = Process(target=hack, args=(number2, '2',))
+            lists.append(p2)
+        except Exception as e:
+            pass
+        try:        
+            number3=(reader.get_chunk(10000)).values
+            p3 = Process(target=hack, args=(number3, '3',))
+            lists.append(p3)
+        except Exception as e:
+            pass
+        try:
+            number4=(reader.get_chunk(10000)).values
+            p4 = Process(target=hack, args=(number4, '4',))
+            lists.append(p4)
+        except Exception as e:
+            pass
+        try:
+            number5=(reader.get_chunk(10000)).values
+            p5 = Process(target=hack, args=(number5, '5',))
+            lists.append(p5)
+        except Exception as e:
+            pass
+        try:
+            number6=(reader.get_chunk(10000)).values
+            p6 = Process(target=hack, args=(number6, '6',))
+            lists.append(p6)
+        except Exception as e:
+            pass
+        try:
+            number7=(reader.get_chunk(10000)).values
+            p7 = Process(target=hack, args=(number6, '6',))
+            lists.append(p7)
+        except Exception as e:
+            pass
+        try:
+            number8=(reader.get_chunk(10000)).values
+            p8 = Process(target=hack, args=(number6, '6',))
+            lists.append(p8)
+        except Exception as e:
+            pass
+        for i in lists:
+            i.start()
+        for I in lists:
+            I.join()
+    end =time.time()
+    print(end-start)
+    ---------------------------------------------------------
+    
+    import pyzipper
+import multiprocessing
+import functools
+import  pandas as pd
+import time
+reader=pd.read_csv('dict.txt',header=None,iterator=True,keep_default_na=False)
+def hack(a,passw):
+    with pyzipper.AESZipFile('C:\\Users\\xxxx\\xx\\test\\xxxx.zip', 'r', compression=pyzipper.ZIP_DEFLATED, encryption=pyzipper.WZ_AES) as f:
+        f.pwd = passw[a].encode('utf-8')
+        try:
+            f.extractall()
+            print("\t密码是:" + passw[a])
+        except Exception as e:
+            print(passw[a].encode('utf-8'))
+            print(e)
+            pass
+
+if __name__ == "__main__":
+    start = time.time()
+    while True:
+        try:
+            numbers=(reader.get_chunk(10000)).values
+            passw=[]
+            for u in numbers:
+                 passw.append((str(u[0])).strip())
+            print(passw.__len__())
+            pool = multiprocessing.Pool(8)
+            hackp=functools.partial(hack,passw=passw)
+            pool.map(hackp, range(0, len(passw)) )
+            pool.close()
+            pool.join()
+
+            
+        except Exception as e:
+            break
+    end =time.time()
+    print(end-start)
