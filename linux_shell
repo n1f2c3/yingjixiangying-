@@ -1,0 +1,21 @@
+#!/bin/bash
+ip=118.184.15.40
+i=1
+while :
+do
+   tmp=`netstat -anplt|grep $ip|awk -F '[/]' '{print $1}'|awk '{print $7}'`
+   #echo $tmp
+   if test -z "$tmp"
+   then
+​       ((i=i+1)) 
+   else
+​       for pid in $tmp; do
+​           echo "PID: "${pid}
+​          result=`ls -lh /proc/$pid|grep exe`
+​          echo "Process: "${result}
+​          kill -9 $pid
+​       done
+​       break
+   fi 
+done
+echo "Total number of times: "${i}
